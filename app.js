@@ -6,4 +6,13 @@ var server = app.listen(8090,function (){
     console.log('Servidor online');
 });
 
-require('socket.io').listen(server);
+var io = require('socket.io').listen(server);
+
+//conexao websocket
+io.on('connection',function (socket) {
+    console.log('Conectado');
+
+    socket.on('disconnect',function () {
+        console.log('Desconectado');
+    });
+});

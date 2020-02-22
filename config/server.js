@@ -1,4 +1,3 @@
-console.log('server');
 // importar modulos necessarios
 var express = require('express');
 var consign = require('consign');

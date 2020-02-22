@@ -10,6 +10,11 @@ module.exports.iniciaChat = function (application , req , res) {
         res.render('index' , {validacao : erros});
         return ;
     }
+    // recuperando a variavel global do express
+    application.get('io').emit(
+        'msgParaCliente',
+        {apelido : dadosForm.apelido , mensagem : 'entrou no Chat'}
+        );
 
     res.render("chat");
 };

@@ -8,6 +8,9 @@ var server = app.listen(8090,function (){
 
 var io = require('socket.io').listen(server);
 
+//variavel global usando o express
+app.set('io',io);
+
 //conexao websocket
 io.on('connection',function (socket) {
     console.log('Conectado');

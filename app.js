@@ -20,6 +20,7 @@ io.on('connection',function (socket) {
     });
 
     socket.on('msgParaServidor',function (data) {
+        // eventos de dialogo
         socket.emit('msgParaCliente'
                     , { apelido: data.apelido
                     , mensagem: data.mensagem  }
@@ -29,6 +30,18 @@ io.on('connection',function (socket) {
             , { apelido: data.apelido
                 , mensagem: data.mensagem  }
             );
+
+
+        // eventos de participantes
+        if(parseInt(data.apelido_atualizado)==0) {
+            socket.emit('participantesParaCliente'
+                , {apelido: data.apelido}
+            );
+
+            socket.broadcast.emit('participantesParaCliente'
+                , {apelido: data.apelido}
+            );
+        }
 
     });
 
